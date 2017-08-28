@@ -1,4 +1,5 @@
 require "bedi/version"
+require "bedi/positional_parser"
 
 module Bedi
   HEADER = {
