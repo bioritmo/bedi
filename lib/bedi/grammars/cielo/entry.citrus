@@ -1,4 +1,8 @@
+require 'util'
+
 grammar Bedi::Cielo::Entry
+  include Bedi::Util
+
   rule Entry
     tipo_de_registro
     numero_do_comprovante_de_venda
@@ -116,13 +120,5 @@ grammar Bedi::Cielo::Entry
 
   rule vencimento_novo
     .*4
-  end
-
-  rule ignore
-    .
-  end
-
-  rule newline
-    "\n"
   end
 end

@@ -1,4 +1,8 @@
+require 'util'
+
 grammar Bedi::Cielo::Header
+  include Bedi::Util
+
   rule Header
     tipo_de_registro
     data_do_deposito
@@ -49,13 +53,4 @@ grammar Bedi::Cielo::Header
   rule indicacao_de_estabelecimento_especial
     .
   end
-
-  rule ignore
-    .
-  end
-
-  rule newline
-    "\n"
-  end
 end
-

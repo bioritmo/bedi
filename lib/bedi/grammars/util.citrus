@@ -1,0 +1,9 @@
+grammar Bedi::Util
+  rule ignore
+    .
+  end
+
+  rule newline
+    "\n"
+  end
+end

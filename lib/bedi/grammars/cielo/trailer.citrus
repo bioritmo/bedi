@@ -1,4 +1,8 @@
+require 'util'
+
 grammar Bedi::Cielo::Trailer
+  include Bedi::Util
+
   rule Trailer
     tipo_de_registro
     quantidade_de_registros
@@ -32,13 +36,5 @@ grammar Bedi::Cielo::Trailer
 
   rule data_prevista_de_credito
     .*8
-  end
-
-  rule ignore
-    .
-  end
-
-  rule newline
-    "\n"
   end
 end
