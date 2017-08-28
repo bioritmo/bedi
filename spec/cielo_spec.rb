@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 module Bedi
   RSpec.describe Cielo do
     describe '#parse' do
@@ -19,30 +21,34 @@ module Bedi
       end
 
       it 'parses the details fields' do
-        _, *details, _ = subject.parse(file)
-        expect(details.first).to include(
-          tipo_de_registro: '01',
-          comprovante_de_venda: '5555555',
-          numero_do_cartao: '0001111222233334444',
-          codigo_de_autorizacao: '888888',
-          data_da_venda: '31082017',
-          opcao_da_venda: '0',
-          valor_da_venda: '000000000007990',
-          quantidade_de_parcelas: '000',
-          valor_financiado: '0' * 15,
-          valor_entrada: '0' * 15,
-          taxa_embarque: '0' * 15,
-          valor_parcela: '0' * 15,
-          numero_do_resumo_de_operacoes: '0000666',
-          numero_do_estabelecimento: '2' * 10,
-          reservado: '1234567890' * 3,
-          status_da_venda: '74',
-          data_prevista_de_liquidacao: '05092017',
-          validade_do_cartao: '2402',
-          codigo_do_erro: ' ' * 4,
-          referencia: ' ' * 11,
-          cartao_novo: ' ' * 19,
-          vencimento_novo: ' ' * 4,
+        _, details, _ = subject.parse(file)
+        expect(details).to eq(
+          [
+            {
+              tipo_de_registro: '01',
+              numero_do_comprovante_de_venda: '5555555',
+              numero_do_cartao: '0001111222233334444',
+              codigo_de_autorizacao: '888888',
+              data_da_venda: '31082017',
+              opcao_da_venda: '0',
+              valor_da_venda: '000000000007990',
+              quantidade_de_parcelas: '000',
+              valor_financiado: '0' * 15,
+              valor_entrada: '0' * 15,
+              taxa_embarque: '0' * 15,
+              valor_parcela: '0' * 15,
+              numero_do_resumo_de_operacoes: '0000666',
+              numero_do_estabelecimento: '2' * 10,
+              reservado: '1234567890' * 3,
+              codigo_de_retorno: '74',
+              data_prevista_de_liquidacao: '05092017',
+              validade_do_cartao: '2402',
+              codigo_do_erro: ' ' * 4,
+              referencia: ' ' * 11,
+              cartao_novo: ' ' * 19,
+              vencimento_novo: ' ' * 4,
+            }
+          ]
         )
       end
 
@@ -54,7 +60,7 @@ module Bedi
           valor_total_bruto: '000000000007990',
           valor_total_aceito: '000000000007990',
           valor_total_liquido: '000000000007990',
-          data_prevista_de_credit: '05092017',
+          data_prevista_de_credito: '05092017',
         )
       end
     end

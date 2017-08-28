@@ -1,0 +1,128 @@
+grammar Bedi::Cielo::Entry
+  rule Entry
+    tipo_de_registro
+    numero_do_comprovante_de_venda
+    numero_do_cartao
+    codigo_de_autorizacao
+    data_da_venda
+    opcao_da_venda
+    valor_da_venda
+    quantidade_de_parcelas
+    valor_financiado
+    valor_entrada
+    taxa_embarque
+    valor_parcela
+    numero_do_resumo_de_operacoes
+    ignore*3
+    numero_do_estabelecimento
+    reservado
+    codigo_de_retorno
+    data_prevista_de_liquidacao
+    validade_do_cartao
+    ignore*7
+    ignore*15
+    ignore*3
+    codigo_do_erro
+    referencia
+    cartao_novo
+    vencimento_novo
+    ignore*2
+    newline
+  end
+
+  rule tipo_de_registro
+    '01'
+  end
+
+  rule numero_do_comprovante_de_venda
+    .*7
+  end
+
+  rule numero_do_cartao
+    .*19
+  end
+
+  rule codigo_de_autorizacao
+    .*6
+  end
+
+  rule data_da_venda
+    .*8
+  end
+
+  rule opcao_da_venda
+    .
+  end
+
+  rule valor_da_venda
+    .*15
+  end
+
+  rule quantidade_de_parcelas
+    .*3
+  end
+
+  rule valor_financiado
+    .*15
+  end
+
+  rule valor_entrada
+    .*15
+  end
+
+  rule taxa_embarque
+    .*15
+  end
+
+  rule valor_parcela
+    .*15
+  end
+
+  rule numero_do_resumo_de_operacoes
+    .*7
+  end
+
+  rule numero_do_estabelecimento
+    .*10
+  end
+
+  rule reservado
+    .*30
+  end
+
+  rule codigo_de_retorno
+    .*2
+  end
+
+  rule data_prevista_de_liquidacao
+    .*8
+  end
+
+  rule validade_do_cartao
+    .*4
+  end
+
+  rule codigo_do_erro
+    .*4
+  end
+
+  rule referencia
+    .*11
+  end
+
+  rule cartao_novo
+    .*19
+  end
+
+  rule vencimento_novo
+    .*4
+  end
+
+  rule ignore
+    .
+  end
+
+  rule newline
+    "\n"
+  end
+end

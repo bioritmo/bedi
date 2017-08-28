@@ -1,0 +1,15 @@
+require 'cielo/header'
+require 'cielo/entry'
+require 'cielo/trailer'
+
+grammar Bedi::Cielo::Parser
+  include Bedi::Cielo::Header
+  include Bedi::Cielo::Entry
+  include Bedi::Cielo::Trailer
+
+  rule Parser
+    Header
+    Entry*
+    Trailer
+  end
+end

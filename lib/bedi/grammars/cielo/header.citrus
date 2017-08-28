@@ -1,0 +1,61 @@
+grammar Bedi::Cielo::Header
+  rule Header
+    tipo_de_registro
+    data_do_deposito
+    numero_do_resumo_de_operacoes
+    reservado
+    ignore*3
+    numero_do_estabelecimento
+    codigo_da_moeda
+    indicador_do_processo
+    indicador_de_venda
+    indicacao_de_estabelecimento_especial
+    ignore*204
+    newline
+  end
+
+  rule tipo_de_registro
+    '0'*2
+  end
+
+  rule data_do_deposito
+    .*8
+  end
+
+  rule numero_do_resumo_de_operacoes
+    .*7
+  end
+
+  rule reservado
+    .*10
+  end
+
+  rule numero_do_estabelecimento
+    .*10
+  end
+
+  rule codigo_da_moeda
+    .*3
+  end
+
+  rule indicador_do_processo
+    'P'
+  end
+
+  rule indicador_de_venda
+    'V'
+  end
+
+  rule indicacao_de_estabelecimento_especial
+    .
+  end
+
+  rule ignore
+    .
+  end
+
+  rule newline
+    "\n"
+  end
+end
+

@@ -1,0 +1,44 @@
+grammar Bedi::Cielo::Trailer
+  rule Trailer
+    tipo_de_registro
+    quantidade_de_registros
+    valor_total_bruto
+    valor_total_aceito
+    valor_total_liquido
+    data_prevista_de_credito
+    ignore*188
+    newline?
+  end
+
+  rule tipo_de_registro
+    '99'
+  end
+
+  rule quantidade_de_registros
+    .*7
+  end
+
+  rule valor_total_bruto
+    .*15
+  end
+
+  rule valor_total_aceito
+    .*15
+  end
+
+  rule valor_total_liquido
+    .*15
+  end
+
+  rule data_prevista_de_credito
+    .*8
+  end
+
+  rule ignore
+    .
+  end
+
+  rule newline
+    "\n"
+  end
+end
