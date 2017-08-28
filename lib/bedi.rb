@@ -6,13 +6,13 @@ module Bedi
     data_do_deposito: { start: 2, size: 8 },
     numero_do_resumo_de_operacoes: { start: 10, size: 7 },
     reservado: { start: 17, size: 10 },
-    nao_utilizar1: { start: 27, size: 3 },
+    # nao_utilizar1: { start: 27, size: 3 },
     numero_do_estabelecimento: { start: 30, size: 10 },
     codigo_da_moeda: { start: 40, size: 3 },
     indicador_do_processo: { start: 43, size: 1 },
     indicador_de_venda: { start: 44, size: 1 },
     indicacao_de_estabelecimento_especial: { start: 45, size: 1 },
-    nao_utilizar2: { start: 46, size: 204 },
+    # nao_utilizar2: { start: 46, size: 204 },
   }
 
   DETAIL = {
@@ -29,20 +29,20 @@ module Bedi
     taxa_embarque: { start: 91, size: 15 },
     valor_parcela: { start: 106, size: 15 },
     numero_do_resumo_de_operacoes: { start: 121, size: 7 },
-    nao_utilizar: { start: 128, size: 3 },
+    # nao_utilizar: { start: 128, size: 3 },
     numero_do_estabelecimento: { start: 131, size: 10 },
     reservado: { start: 141, size: 30 },
     status_da_venda: { start: 171, size: 2 },
     data_prevista_de_liquidacao: { start: 173, size: 8 },
     validade_do_cartao: { start: 181, size: 4 },
-    nao_utilizar2: { start: 185, size: 7 },
-    nao_utilizar3: { start: 192, size: 15 },
-    nao_utilizar4: { start: 207, size: 3 },
+    # nao_utilizar2: { start: 185, size: 7 },
+    # nao_utilizar3: { start: 192, size: 15 },
+    # nao_utilizar4: { start: 207, size: 3 },
     codigo_do_erro: { start: 210, size: 4 },
     referencia: { start: 214, size: 11 },
     cartao_novo: { start: 225, size: 19 },
     vencimento_novo: { start: 244, size: 4 },
-    nao_utilizar5: { start: 248, size: 2 },
+    # nao_utilizar5: { start: 248, size: 2 },
   }
 
   TRAILER = {
@@ -52,7 +52,7 @@ module Bedi
     valor_total_aceito: { start: 24, size: 15 },
     valor_total_liquido: { start: 39, size: 15 },
     data_prevista_de_credit: { start: 54, size: 8 },
-    nao_utilizar: { start: 62, size: 188 },
+    # nao_utilizar: { start: 62, size: 188 },
   }
 
   def self.parse(file)
