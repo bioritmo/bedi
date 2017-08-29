@@ -1,0 +1,143 @@
+require 'util'
+
+grammar Bedi::Redecard::Entry01
+  include Bedi::Util
+
+  rule Entry01
+    tipo_de_registro
+    numero_referencia
+    codigo_da_transacao
+    numero_do_cartao_de_credito
+    numero_da_maquineta
+    numero_da_autorizacao
+    numero_do_comprovante_de_venda
+    valor_da_venda
+    valor_servico
+    valor_total_da_operacao
+    data_da_venda
+    numero_de_parcelas
+    sequencia_do_registro_no_lote
+    numero_do_lote
+    ignore*3
+    valor_venda_calculado
+    valor_servico_calculado
+    valor_deconto_calculado
+    valor_total_operacao_calculado
+    data_prevista_do_credito
+    ignore*9
+    codigo_do_retorno
+    ignore*6
+    numero_atual_do_cartao
+    validade_atual_do_cartao
+    ignore*3
+    validade_do_cartao
+    s_ou_n
+    reservado
+    numero_de_sequencia_do_registro
+    newline
+  end
+
+  rule tipo_de_registro
+    '01'
+  end
+
+  rule numero_referencia
+    .*13
+  end
+
+  rule codigo_da_transacao
+    '101'
+  end
+
+  rule numero_do_cartao_de_credito
+    .*17
+  end
+
+  rule numero_da_maquineta
+    .*9
+  end
+
+  rule numero_da_autorizacao
+    .*6
+  end
+
+  rule numero_do_comprovante_de_venda
+    .*8
+  end
+
+  rule valor_da_venda
+    .*15
+  end
+
+  rule valor_servico
+    .*15
+  end
+
+  rule valor_total_da_operacao
+    .*15
+  end
+
+  rule data_da_venda
+    .*6
+  end
+
+  rule numero_de_parcelas
+    .*2
+  end
+
+  rule sequencia_do_registro_no_lote
+    .*3
+  end
+
+  rule numero_do_lote
+    .*5
+  end
+
+  rule valor_venda_calculado
+    .*15
+  end
+
+  rule valor_servico_calculado
+    .*15
+  end
+
+  rule valor_deconto_calculado
+    .*15
+  end
+
+  rule valor_total_operacao_calculado
+    .*15
+  end
+
+  rule data_prevista_do_credito
+    .*6
+  end
+
+  rule codigo_do_retorno
+    .*2
+  end
+
+  rule numero_atual_do_cartao
+    .*16
+  end
+
+  rule validade_atual_do_cartao
+    .*4
+  end
+
+  rule validade_do_cartao
+    .*4
+  end
+
+  rule s_ou_n
+    .
+  end
+
+  rule reservado
+    .*12
+  end
+
+  rule numero_de_sequencia_do_registro
+    .*5
+  end
+end

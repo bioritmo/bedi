@@ -1,0 +1,106 @@
+require 'util'
+
+grammar Bedi::Redecard::Entry30
+  include Bedi::Util
+
+  rule Entry30
+    tipo_de_registro
+    numero_referencia
+    codigo_da_transacao
+    numero_do_rv_gerado
+    ignore*5
+    numero_da_maquineta
+    data_do_resumo_de_vendas
+    valor_total_de_vendas_do_lote
+    valor_total_servicos
+    valor_deconto_do_lote
+    liquido_no_lote
+    numero_de_transacoes_do_lote
+    sequencia_do_registro_no_lote
+    numero_do_lote
+    valor_total_de_vendas_no_lote
+    valor_total_de_gorjetas_no_lote
+    valor_desconto_no_lote
+    valor_total_das_transacoes_do_lote
+    data_de_credito
+    ignore*60
+    numero_de_sequencia_do_registro
+    newline?
+  end
+
+  rule tipo_de_registro
+    '30'
+  end
+
+  rule numero_referencia
+    '9'*13
+  end
+
+  rule codigo_da_transacao
+    .*3
+  end
+
+  rule numero_do_rv_gerado
+    .*8
+  end
+
+  rule numero_da_maquineta
+    .*9
+  end
+
+  rule data_do_resumo_de_vendas
+    .*6
+  end
+
+  rule valor_total_de_vendas_do_lote
+    .*15
+  end
+
+  rule valor_total_servicos
+    .*15
+  end
+
+  rule valor_deconto_do_lote
+    .*15
+  end
+
+  rule liquido_no_lote
+    .*15
+  end
+
+  rule numero_de_transacoes_do_lote
+    .*5
+  end
+
+  rule sequencia_do_registro_no_lote
+    .*3
+  end
+
+  rule numero_do_lote
+    .*5
+  end
+
+  rule valor_total_de_vendas_no_lote
+    .*15
+  end
+
+  rule valor_total_de_gorjetas_no_lote
+    .*15
+  end
+
+  rule valor_desconto_no_lote
+    .*15
+  end
+
+  rule valor_total_das_transacoes_do_lote
+    .*15
+  end
+
+  rule data_de_credito
+    .*6
+  end
+
+  rule numero_de_sequencia_do_registro
+    .*5
+  end
+end

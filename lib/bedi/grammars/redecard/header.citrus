@@ -1,0 +1,79 @@
+require 'util'
+
+grammar Bedi::Redecard::Header
+  include Bedi::Util
+
+  rule Header
+    tipo_de_registro
+    ignore*13
+    codigo_da_empresa
+    nome_da_empresa
+    ignore*5
+    numero_de_sequencia_movimento
+    data_de_gravacao
+    hora_de_gravacao
+    ignore*1
+    produto
+    ignore*33
+    numero_de_sequencia_no_lote
+    numero_do_lote
+    data_do_protocolo
+    data_para_o_credito
+    ignore*113
+    status_do_movimento
+    numero_de_sequencia_do_registro
+    newline
+  end
+
+  rule tipo_de_registro
+    '0'*2
+  end
+
+  rule codigo_da_empresa
+    [0-9]*10
+  end
+
+  rule nome_da_empresa
+    .*30
+  end
+
+  rule numero_de_sequencia_movimento
+    [0-9]*4
+  end
+
+  rule data_de_gravacao
+    .*6
+  end
+
+  rule hora_de_gravacao
+    .*6
+  end
+
+  rule produto
+    '1' | '2' | '3'
+  end
+
+  rule numero_de_sequencia_no_lote
+    [0-9]*3
+  end
+
+  rule numero_do_lote
+    [0-9]*5
+  end
+
+  rule data_do_protocolo
+    .*6
+  end
+
+  rule data_para_o_credito
+    .*6
+  end
+
+  rule status_do_movimento
+    .
+  end
+
+  rule numero_de_sequencia_do_registro
+    [0-9]*5
+  end
+end

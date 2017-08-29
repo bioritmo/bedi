@@ -19,7 +19,7 @@ grammar Bedi::Cielo::Header
   end
 
   rule tipo_de_registro
-    '0'*2
+    '00'
   end
 
   rule data_do_deposito
