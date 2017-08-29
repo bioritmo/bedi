@@ -3,7 +3,7 @@ require 'spec_helper'
 module Bedi
   RSpec.describe Cielo do
     describe '#parse' do
-      let(:file) { File.open(File.join(File.dirname(__FILE__), 'fixtures/cielo_retorno_de_vendas')) }
+      let(:file) { fixture_file('cielo_retorno_de_vendas') }
 
       it 'parses the header fields' do
         header = subject.parse(file)[:header]
