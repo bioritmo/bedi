@@ -6,7 +6,7 @@ module Bedi
       let(:file) { File.open(File.join(File.dirname(__FILE__), 'fixtures/cielo_retorno_de_vendas')) }
 
       it 'parses the header fields' do
-        header, *, _ = subject.parse(file)
+        header = subject.parse(file)[:header]
         expect(header).to include(
           tipo_de_registro: '00',
           data_do_deposito: '31082017',
@@ -21,8 +21,8 @@ module Bedi
       end
 
       it 'parses the details fields' do
-        _, details, _ = subject.parse(file)
-        expect(details).to eq(
+        entries = subject.parse(file)[:entry]
+        expect(entries).to eq(
           [
             {
               tipo_de_registro: '01',
@@ -53,7 +53,7 @@ module Bedi
       end
 
       it 'parses the trailer fields' do
-        _, *, trailer = subject.parse(file)
+        trailer = subject.parse(file)[:trailer]
         expect(trailer).to include(
           tipo_de_registro: '99',
           quantidade_de_registros: '0000001',

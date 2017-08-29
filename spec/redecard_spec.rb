@@ -6,7 +6,7 @@ module Bedi
       let(:file) { File.open(File.join(File.dirname(__FILE__), 'fixtures/redecard_transacao_de_credito')) }
 
       it 'parses the header fields' do
-        header, * = subject.parse(file)
+        header = subject.parse(file)[:header]
         expect(header).to include(
           tipo_de_registro: '00',
           codigo_da_empresa: '1234567890',
@@ -25,8 +25,8 @@ module Bedi
       end
 
       it 'parses the type 01 entry fields' do
-        _, details, _ = subject.parse(file)
-        expect(details.first).to include(
+        entries01 = subject.parse(file)[:entry01]
+        expect(entries01).to include(
           tipo_de_registro: '01',
           numero_referencia: '1234567890123',
           codigo_da_transacao: '101',
@@ -57,9 +57,8 @@ module Bedi
       end
 
       it 'parses the type 30 entry fields' do
-        _, details, _ = subject.parse(file)
-        entry30 = details[1]
-        expect(entry30).to include(
+        entries30 = subject.parse(file)[:entry30]
+        expect(entries30).to include(
           tipo_de_registro: '30',
           numero_referencia: '9' * 13,
           codigo_da_transacao: '101',
@@ -83,9 +82,8 @@ module Bedi
       end
 
       it 'parses the type 40 entry fields' do
-        _, details, _ = subject.parse(file)
-        entry40 = details[2]
-        expect(entry40).to include(
+        entries40 = subject.parse(file)[:entry40]
+        expect(entries40).to include(
           tipo_de_registro: '40',
           numero_referencia: '9' * 13,
           codigo_da_transacao: '101',
@@ -106,7 +104,7 @@ module Bedi
       end
 
       it 'parses the trailer fields' do
-        _, *, trailer = subject.parse(file)
+        trailer = subject.parse(file)[:trailer]
         expect(trailer).to include(
           tipo_de_registro: '99',
           numero_de_referencia: '9' * 13,
