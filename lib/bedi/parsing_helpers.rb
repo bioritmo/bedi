@@ -13,7 +13,7 @@ module Bedi
     def remove_artifacts(match)
       match.captures.each_with_object({}) do |(key, val), result|
         next if (Numeric === key) || (key.to_s =~ /^([A-Z]|ignore|newline)/)
-        result[key] = val.first
+        result[key] = val.first.to_str
       end
     end
   end
