@@ -5,8 +5,10 @@ module Bedi
     describe '#parse' do
       let(:file) { fixture_file('cielo_retorno_de_vendas') }
 
+      subject { described_class.new.parse(file) }
+
       it 'parses the header fields' do
-        header = subject.parse(file)[:header]
+        header = subject[:header]
         expect(header).to include(
           tipo_de_registro: '00',
           data_do_deposito: '31082017',
@@ -21,7 +23,7 @@ module Bedi
       end
 
       it 'parses the details fields' do
-        entries = subject.parse(file)[:entry]
+        entries = subject[:entry]
         expect(entries).to eq(
           [
             {
@@ -53,7 +55,7 @@ module Bedi
       end
 
       it 'parses the trailer fields' do
-        trailer = subject.parse(file)[:trailer]
+        trailer = subject[:trailer]
         expect(trailer).to include(
           tipo_de_registro: '99',
           quantidade_de_registros: '0000001',
