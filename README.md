@@ -1,8 +1,7 @@
 # Bedi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bedi`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+**bedi** is a gem for parsing the many different type of EDI files out there.
+It aims to provide a similar parsed interface to all of them.
 
 ## Installation
 
@@ -22,7 +21,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+parser = Bedi::Cielo.new
+result = parser.parse_file('cielo_return.txt')
+# ...
+parser = Bedi::Redecard.new
+result = parser.parse_file('redecard_return.txt')
+```
 
 ## Development
 
@@ -32,7 +37,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/dlisboa/bedi.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bioritmo/bedi.
 
 ## License
 
