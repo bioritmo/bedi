@@ -7,12 +7,21 @@ module Bedi
     def parse(file)
       result = Parser.parse(file)
 
+      formatted_batches = result[:Batch].map { |b| format_batch(b) }
       {
-        header: format(result[:Header]),
-        entry01: format(result[:Entry01]),
-        entry30: format(result[:Entry30]),
-        entry40: format(result[:Entry40]),
-        trailer: format(result[:Trailer])
+        batches: formatted_batches
+      }
+    end
+
+    private
+
+    def format_batch(batch)
+      {
+        header: format(batch[:Header]),
+        entry01: format(batch[:Entry01]),
+        entry30: format(batch[:Entry30]),
+        entry40: format(batch[:Entry40]),
+        trailer: format(batch[:Trailer])
       }
     end
   end

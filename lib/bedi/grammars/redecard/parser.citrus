@@ -12,10 +12,16 @@ grammar Bedi::Redecard::Parser
   include Bedi::Redecard::Trailer
 
   rule Parser
-    Header
-    Entry01*
-    Entry30
-    Entry40
-    Trailer
+    Batch+
+  end
+
+  rule Batch
+    (
+      Header
+      Entry01*
+      Entry30
+      Entry40
+      Trailer
+    )
   end
 end
