@@ -4,8 +4,8 @@ module Bedi
 
     Citrus.require('cielo/parser')
 
-    def parse(file)
-      result = Parser.parse(file)
+    def parse(source)
+      result = Parser.parse(source)
 
       {
         header: format(result[:Header]),

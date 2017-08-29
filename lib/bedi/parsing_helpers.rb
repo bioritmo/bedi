@@ -1,5 +1,11 @@
 module Bedi
   module ParsingHelpers
+    def parse_file(path)
+      parse(File.open(path))
+    end
+
+    private
+
     def format(matches)
       matches.map { |m| remove_artifacts(m) }
     end

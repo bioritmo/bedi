@@ -4,8 +4,8 @@ module Bedi
 
     Citrus.require('redecard/parser')
 
-    def parse(file)
-      result = Parser.parse(file)
+    def parse(source)
+      result = Parser.parse(source)
 
       formatted_batches = result[:Batch].map { |b| format_batch(b) }
       {
