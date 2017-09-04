@@ -18,8 +18,10 @@ grammar Bedi::Redecard::Parser
   rule Batch
     (
       Header
-      Entry01*
-      Entry30
+      (
+        Entry01+
+        Entry30
+      )+
       Entry40
       Trailer
     )
