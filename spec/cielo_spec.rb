@@ -65,6 +65,31 @@ module Bedi
           data_prevista_de_credito: '05092017',
         )
       end
+
+      context 'when the file has CRLF line terminators' do
+        let(:file) { fixture_file('cielo_retorno_de_vendas_with_crlf_terminators') }
+
+        subject { described_class.new.parse(file) }
+
+        it 'does not raise errors' do
+          expect { subject }.not_to raise_error
+        end
+
+        it 'parses the file correctly' do
+          header = subject[:header]
+          expect(header).to include(
+            tipo_de_registro: '00',
+            data_do_deposito: '31082017',
+            numero_do_resumo_de_operacoes: '0000666',
+            reservado: ' ' * 10,
+            numero_do_estabelecimento: '1111111111',
+            codigo_da_moeda: '986',
+            indicador_do_processo: 'P',
+            indicador_de_venda: 'V',
+            indicacao_de_estabelecimento_especial: ' ',
+          )
+        end
+      end
     end
   end
 end

@@ -4,6 +4,6 @@ grammar Bedi::Util
   end
 
   rule newline
-    "\n"
+    "\n" | "\r\n"
   end
 end
