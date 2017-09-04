@@ -117,20 +117,50 @@ module Bedi
           )
         end
       end
-    end
 
-    context 'when the file has more than one batch' do
-      let(:file) { fixture_file('redecard_dois_batches') }
+      context 'when the file has more than one batch' do
+        let(:file) { fixture_file('redecard_dois_batches') }
 
-      subject { described_class.new.parse(file)[:batches] }
+        subject { described_class.new.parse(file)[:batches] }
 
-      let(:first_batch) { subject.first }
-      let(:second_batch) { subject.last }
+        let(:first_batch) { subject.first }
+        let(:second_batch) { subject.last }
 
-      it 'separates the headers, entries and trailer' do
-        expect(first_batch[:header]).not_to eq(second_batch[:header])
-        expect(first_batch[:entry01]).not_to eq(second_batch[:entry01])
-        expect(first_batch[:trailer]).not_to eq(second_batch[:trailer])
+        it 'separates the headers, entries and trailer' do
+          expect(first_batch[:header]).not_to eq(second_batch[:header])
+          expect(first_batch[:entry01]).not_to eq(second_batch[:entry01])
+          expect(first_batch[:trailer]).not_to eq(second_batch[:trailer])
+        end
+      end
+
+      context 'when the file has CRLF line terminators' do
+        let(:file) { fixture_file('redecard_transacao_de_credito_with_crlf_terminators') }
+
+        subject { described_class.new.parse(file) }
+
+        it 'does not raise errors' do
+          expect { subject }.not_to raise_error
+        end
+
+        it 'parses the file correctly' do
+          first_batch = subject[:batches].first
+          header = first_batch[:header]
+          expect(header).to include(
+            tipo_de_registro: '00',
+            codigo_da_empresa: '1234567890',
+            nome_da_empresa: 'ACME INC LTDA                 ',
+            numero_de_sequencia_movimento: '0001',
+            data_de_gravacao: '170831',
+            hora_de_gravacao: '223344',
+            produto: '3',
+            numero_de_sequencia_no_lote: '555',
+            numero_do_lote: '77777',
+            data_do_protocolo: '170831',
+            data_para_o_credito: '170901',
+            status_do_movimento: 'A',
+            numero_de_sequencia_do_registro: '00001',
+          )
+        end
       end
     end
   end
