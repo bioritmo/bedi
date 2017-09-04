@@ -1,5 +1,7 @@
 # Bedi
 
+![TravisCI Status](https://travis-ci.org/bioritmo/bedi.svg?branch=master)
+
 **bedi** is a gem for parsing the many different type of EDI files out there.
 It aims to provide a similar parsed interface to all of them.
 
