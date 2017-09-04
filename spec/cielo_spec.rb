@@ -5,7 +5,7 @@ module Bedi
     describe '#parse' do
       let(:file) { fixture_file('cielo_retorno_de_vendas') }
 
-      subject { described_class.new.parse(file) }
+      subject { described_class.new.parse(file)[:batches].first }
 
       it 'parses the header fields' do
         header = subject[:header]
@@ -69,7 +69,7 @@ module Bedi
       context 'when the file has CRLF line terminators' do
         let(:file) { fixture_file('cielo_retorno_de_vendas_with_crlf_terminators') }
 
-        subject { described_class.new.parse(file) }
+        subject { described_class.new.parse(file)[:batches].first }
 
         it 'does not raise errors' do
           expect { subject }.not_to raise_error

@@ -8,8 +8,14 @@ grammar Bedi::Cielo::Parser
   include Bedi::Cielo::Trailer
 
   rule Parser
-    Header
-    Entry*
-    Trailer
+    Batch+
+  end
+
+  rule Batch
+    (
+      Header
+      Entry+
+      Trailer
+    )
   end
 end
