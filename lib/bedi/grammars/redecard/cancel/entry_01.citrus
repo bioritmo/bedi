@@ -1,0 +1,97 @@
+require 'util'
+
+grammar Bedi::Redecard::Cancel::Entry01
+  include Bedi::Util
+
+  rule Entry01
+    tipo_de_registro
+    numero_referencia
+    codigo_da_transacao
+    numero_do_cartao_de_credito
+    numero_da_maquineta
+    numero_da_autorizacao
+    numero_do_comprovante_de_venda
+    valor_da_venda
+    valor_a_restituir
+    valor_total
+    data_da_venda
+    numero_de_parcelas
+    sequencia_do_registro_no_lote
+    numero_do_lote
+    ignore*78
+    codigo_do_retorno
+    ignore*15
+    reservado
+    ignore*2
+    numero_de_sequencia_do_registro
+    newline
+  end
+
+  rule tipo_de_registro
+    '01'
+  end
+
+  rule numero_referencia
+    .*13
+  end
+
+  rule codigo_da_transacao
+    '101'
+  end
+
+  rule numero_do_cartao_de_credito
+    .*17
+  end
+
+  rule numero_da_maquineta
+    .*9
+  end
+
+  rule numero_da_autorizacao
+    .*6
+  end
+
+  rule numero_do_comprovante_de_venda
+    .*12
+  end
+
+  rule valor_da_venda
+    .*15
+  end
+
+  rule valor_a_restituir
+    .*15
+  end
+
+  rule valor_total
+    .*15
+  end
+
+  rule data_da_venda
+    .*6
+  end
+
+  rule numero_de_parcelas
+    .*2
+  end
+
+  rule sequencia_do_registro_no_lote
+    .*3
+  end
+
+  rule numero_do_lote
+    .*5
+  end
+
+  rule codigo_do_retorno
+    .*2
+  end
+
+  rule reservado
+    .*25
+  end
+
+  rule numero_de_sequencia_do_registro
+    .*5
+  end
+end

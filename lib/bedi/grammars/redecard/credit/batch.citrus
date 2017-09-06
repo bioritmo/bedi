@@ -1,0 +1,25 @@
+require 'redecard/credit/header'
+require 'redecard/credit/entry_01'
+require 'redecard/credit/entry_30'
+require 'redecard/credit/entry_40'
+require 'redecard/credit/trailer'
+
+grammar Bedi::Redecard::Credit::CreditBatch
+  include Bedi::Redecard::Credit::Header
+  include Bedi::Redecard::Credit::Entry01
+  include Bedi::Redecard::Credit::Entry30
+  include Bedi::Redecard::Credit::Entry40
+  include Bedi::Redecard::Credit::Trailer
+
+  rule CreditBatch
+    (
+      Header
+      (
+        Entry01*
+        Entry30
+      )+
+      Entry40+
+      Trailer
+    )
+  end
+end

@@ -1,0 +1,60 @@
+require 'util'
+
+grammar Bedi::Redecard::Cancel::Entry40
+  include Bedi::Util
+
+  rule Entry40
+    tipo_de_registro
+    ignore*13
+    codigo_da_transacao
+    ignore*14
+    numero_da_centralizadora_de_pagamento
+    ignore*6
+    valor_total_de_vendas
+    total_a_restituir
+    ignore*15
+    total_liquido
+    ignore*4
+    sequencia_do_registro_no_lote
+    numero_do_lote
+    ignore*126
+    numero_de_sequencia_do_registro
+    newline
+  end
+
+  rule tipo_de_registro
+    '40'
+  end
+
+  rule codigo_da_transacao
+    .*3
+  end
+
+  rule numero_da_centralizadora_de_pagamento
+    .*9
+  end
+
+  rule valor_total_de_vendas
+    .*15
+  end
+
+  rule total_a_restituir
+    .*15
+  end
+
+  rule total_liquido
+    .*15
+  end
+
+  rule sequencia_do_registro_no_lote
+    .*3
+  end
+
+  rule numero_do_lote
+    .*5
+  end
+
+  rule numero_de_sequencia_do_registro
+    .*5
+  end
+end
