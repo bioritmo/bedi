@@ -1,0 +1,23 @@
+require 'redecard/cancel/header'
+require 'redecard/cancel/entry_01'
+require 'redecard/cancel/entry_30'
+require 'redecard/cancel/entry_40'
+require 'redecard/cancel/trailer'
+
+grammar Bedi::Redecard::Cancel::CancelBatch
+  include Bedi::Redecard::Cancel::Header
+  include Bedi::Redecard::Cancel::Entry01
+  include Bedi::Redecard::Cancel::Entry30
+  include Bedi::Redecard::Cancel::Entry40
+  include Bedi::Redecard::Cancel::Trailer
+
+  rule CancelBatch
+    Header
+    (
+      Entry01*
+      Entry30
+    )+
+    Entry40+
+    Trailer?
+  end
+end

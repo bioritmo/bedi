@@ -1,0 +1,36 @@
+require 'util'
+
+grammar Bedi::Redecard::Cancel::Trailer
+  include Bedi::Util
+
+  rule Trailer
+    tipo_de_registro
+    numero_de_referencia
+    ignore*96
+    sequencia_do_registro_no_lote
+    numero_do_lote
+    ignore*126
+    sequencia_do_registro_no_movimento
+    newline
+  end
+
+  rule tipo_de_registro
+    '99'
+  end
+
+  rule numero_de_referencia
+    '9'*13
+  end
+
+  rule sequencia_do_registro_no_lote
+    .*3
+  end
+
+  rule numero_do_lote
+    .*5
+  end
+
+  rule sequencia_do_registro_no_movimento
+    .*5
+  end
+end

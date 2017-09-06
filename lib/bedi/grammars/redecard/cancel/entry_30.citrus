@@ -1,0 +1,100 @@
+require 'util'
+
+grammar Bedi::Redecard::Cancel::Entry30
+  include Bedi::Util
+
+  rule Entry30
+    tipo_de_registro
+    numero_referencia
+    codigo_da_transacao
+    ignore*13
+    numero_da_maquineta
+    data_do_resumo_de_vendas
+    valor_total_de_cancelamento
+    total_a_restituir
+    ignore*15
+    liquido
+    parcelas_no_lote
+    sequencia_do_registro_no_lote
+    numero_do_lote
+    ignore*126
+    numero_de_sequencia_do_registro
+    newline
+  end
+
+  rule tipo_de_registro
+    '30'
+  end
+
+  rule numero_referencia
+    '9'*13
+  end
+
+  rule codigo_da_transacao
+    .*3
+  end
+
+  rule numero_do_rv_gerado
+    .*8
+  end
+
+  rule numero_da_maquineta
+    .*9
+  end
+
+  rule data_do_resumo_de_vendas
+    .*6
+  end
+
+  rule valor_total_de_cancelamento
+    .*15
+  end
+
+  rule total_a_restituir
+    .*15
+  end
+
+  rule valor_deconto_do_lote
+    .*15
+  end
+
+  rule liquido
+    .*15
+  end
+
+  rule parcelas_no_lote
+    .*5
+  end
+
+  rule sequencia_do_registro_no_lote
+    .*3
+  end
+
+  rule numero_do_lote
+    .*5
+  end
+
+  rule valor_total_de_vendas_no_lote
+    .*15
+  end
+
+  rule valor_total_de_gorjetas_no_lote
+    .*15
+  end
+
+  rule valor_desconto_no_lote
+    .*15
+  end
+
+  rule valor_total_das_transacoes_do_lote
+    .*15
+  end
+
+  rule data_de_credito
+    .*6
+  end
+
+  rule numero_de_sequencia_do_registro
+    .*5
+  end
+end

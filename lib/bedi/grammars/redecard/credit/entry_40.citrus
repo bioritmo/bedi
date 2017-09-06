@@ -1,6 +1,6 @@
 require 'util'
 
-grammar Bedi::Redecard::Entry40
+grammar Bedi::Redecard::Credit::Entry40
   include Bedi::Util
 
   rule Entry40

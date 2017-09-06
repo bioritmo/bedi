@@ -1,29 +1,15 @@
-require 'redecard/header'
-require 'redecard/entry_01'
-require 'redecard/entry_30'
-require 'redecard/entry_40'
-require 'redecard/trailer'
+require 'redecard/credit/batch'
+require 'redecard/cancel/batch'
 
 grammar Bedi::Redecard::Parser
-  include Bedi::Redecard::Header
-  include Bedi::Redecard::Entry01
-  include Bedi::Redecard::Entry30
-  include Bedi::Redecard::Entry40
-  include Bedi::Redecard::Trailer
+  include Bedi::Redecard::Credit::CreditBatch
+  include Bedi::Redecard::Cancel::CancelBatch
 
   rule Parser
     Batch+
   end
 
   rule Batch
-    (
-      Header
-      (
-        Entry01+
-        Entry30
-      )+
-      Entry40
-      Trailer
-    )
+    CreditBatch | CancelBatch
   end
 end

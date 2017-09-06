@@ -1,6 +1,6 @@
 require 'util'
 
-grammar Bedi::Redecard::Trailer
+grammar Bedi::Redecard::Credit::Trailer
   include Bedi::Util
 
   rule Trailer

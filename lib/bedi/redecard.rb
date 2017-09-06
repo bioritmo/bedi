@@ -2,6 +2,9 @@ module Bedi
   class Redecard
     include ParsingHelpers
 
+    module Credit; end
+    module Cancel; end
+
     Citrus.require('redecard/parser')
 
     def parse(source)

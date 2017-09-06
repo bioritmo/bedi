@@ -1,6 +1,6 @@
 require 'util'
 
-grammar Bedi::Redecard::Entry01
+grammar Bedi::Redecard::Credit::Entry01
   include Bedi::Util
 
   rule Entry01

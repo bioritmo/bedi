@@ -1,6 +1,6 @@
 require 'util'
 
-grammar Bedi::Redecard::Entry30
+grammar Bedi::Redecard::Credit::Entry30
   include Bedi::Util
 
   rule Entry30
@@ -25,7 +25,7 @@ grammar Bedi::Redecard::Entry30
     data_de_credito
     ignore*60
     numero_de_sequencia_do_registro
-    newline?
+    newline
   end
 
   rule tipo_de_registro
